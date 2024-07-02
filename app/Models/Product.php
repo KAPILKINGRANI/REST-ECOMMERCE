@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    const UNAVAILABLE_PRODUCT = 'unavailable';
+    const AVAILABLE_PRODUCT = "available";
 }

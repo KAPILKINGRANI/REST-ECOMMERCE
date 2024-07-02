@@ -11,6 +11,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const VERIFIED_USER = 'verified';
+    const UNVERIFIED_USER = 'unverified';
+
+    const ADMIN_USER = true;
+    const REGULAR_USER = false;
     /**
      * The attributes that are mass assignable.
      *
