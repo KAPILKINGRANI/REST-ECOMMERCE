@@ -18,6 +18,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->string('verified')->default(\App\Models\User::UNVERIFIED_USER);
+            $table->string('verification_token')->nullable();
+            $table->string('admin')->default(\App\Models\User::REGULAR_USER);
+            $table->softDeletes();
+
             $table->timestamps();
         });
 
