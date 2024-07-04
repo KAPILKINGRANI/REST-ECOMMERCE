@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 
-#[ScopedBy(([SellerScope::class]))]
+
 class SellerScope implements Scope
 {
     /**
