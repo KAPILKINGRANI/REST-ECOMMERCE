@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Product;
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class ProductsController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -13,37 +15,15 @@ class ProductsController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        $products = Product::all();
+        return $this->showAll($products);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return $this->showOne($product);
     }
 }
