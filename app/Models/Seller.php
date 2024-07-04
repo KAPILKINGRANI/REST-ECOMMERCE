@@ -18,3 +18,11 @@ class Seller extends User
         return $this->hasMany(Product::class);
     }
 }
+/**
+ * Global scopes allow you to add constraints to all queries for a given model.
+ * jaise sellers bhi users hi hai theek h and a seller can have many products that means a buyer may have products or may not
+ *scope se humne constraint laga di ki has('products') that means wahi Sellers aae (wahi users aaye) jinke pass Products ho
+ * ye scope ka concept laravel 11 se aaya hai model ke upar
+ * special annotaion #Scope[()] # ke baad space mat dena
+ */
+
