@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,14 +56,25 @@ class User extends Authenticatable
         ];
     }
 
-    public function isVerified() : bool {
+    public function isVerified(): bool
+    {
         return $this->verified === self::VERIFIED_USER;
     }
 
-    public function isAdmin() : bool {
+    public function isAdmin(): bool
+    {
         return $this->admin === self::ADMIN_USER;
     }
-    public static function generateVerificationToken() : string {
+    public static function generateVerificationToken(): string
+    {
         return Str::random(40);
+    }
+    /**
+     * Defining a Mutator
+     *  @return Attribute
+     */
+    protected function email(): Attribute
+    {
+        return Attribute::make(set: fn (string $value) => strtolower($value));
     }
 }
