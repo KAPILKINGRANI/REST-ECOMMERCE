@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+//note UsersController is extending ApiController
+//ApiController extends the controller
+//need of apiController because of standardization
+//all the methods such as show all ,show one ,error message is written inside api controller and we make use of those methods here
+class UsersController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +21,8 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        return response()->json(['data' => $users], 200);
+        // return response()->json(['data' => $users], 200);
+        return $this->showAll($users);
     }
 
     /**
@@ -31,7 +37,8 @@ class UsersController extends Controller
         $data['admin'] = User::REGULAR_USER;
 
         $user = User::create($data);
-        return response()->json(['data' => $user], 201);
+        // return response()->json(['data' => $user], 201);
+        return $this->showOne($user, 201);
     }
 
     /**
@@ -41,7 +48,8 @@ class UsersController extends Controller
     {
         //status code 201
         //The request succeeded, and a new resource was created as a result. This is typically the response sent after POST requests, or some PUT requests.
-        return response()->json(['data' => $user], 200);
+        // return response()->json(['data' => $user], 200);
+        return $this->showOne($user, 201);
     }
 
     /**
@@ -69,7 +77,8 @@ class UsersController extends Controller
             //409 Conflict
             //This response is sent when a request conflicts with the current state of the server.
             if (!$user->isVerified()) {
-                return response()->json(['error' => 'Verified Users Can Modify The Admin Field'], 409);
+                // return response()->json(['error' => 'Verified Users Can Modify The Admin Field'], 409);
+                return $this->errorResponse('Verified Users Can Modify The Admin Field', 409);
             }
             $user->admin = $request->validated('admin');
         }
@@ -77,11 +86,13 @@ class UsersController extends Controller
         if (!$user->isDirty()) {
             //422 Unprocessable Content
             //The request was well-formed but was unable to be followed due to semantic errors.
-            return response()->json(['error' => 'You Need to update at least a single field'], 422);
+            // return response()->json(['error' => 'You Need to update at least a single field'], 422);
+            return $this->errorResponse('You Need to update at least a single field', 422);
         }
 
         $user->save();
-        return response()->json(['data' => $user], 200);
+        // return response()->json(['data' => $user], 200);
+        return $this->showOne($user, 201);
     }
 
     /**
@@ -90,6 +101,7 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return response()->json(['data' => $user], 200);
+        // return response()->json(['data' => $user], 200);
+        return $this->showOne($user, 200);
     }
 }
