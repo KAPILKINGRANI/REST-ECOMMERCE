@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     const UNAVAILABLE_PRODUCT = 'unavailable';
     const AVAILABLE_PRODUCT = "available";
@@ -22,23 +23,27 @@ class Product extends Model
         'status',
         'image',
         'seller_id'
-   ];
+    ];
     //Product belongs to many category
-    public function categories() : BelongsToMany {
+    public function categories(): BelongsToMany
+    {
         return $this->belongsToMany(Category::class);
     }
 
     //one product belongs to one seller
-    public function seller() : BelongsTo {
+    public function seller(): BelongsTo
+    {
         return $this->belongsTo(Seller::class);
     }
 
     //a product has many transactions
-    public function transactions() : HasMany {
+    public function transactions(): HasMany
+    {
         return $this->hasMany(Transaction::class);
     }
 
-    public function isAvailable() : bool {
+    public function isAvailable(): bool
+    {
         return $this->status === self::AVAILABLE_PRODUCT;
     }
 }
