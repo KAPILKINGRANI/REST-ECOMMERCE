@@ -24,8 +24,11 @@ Route::apiResource('categories.products', \App\Http\Controllers\Category\Categor
 Route::apiResource('categories.transactions', \App\Http\Controllers\Category\CategoryTransactionsController::class)->only(['index']);
 Route::apiResource('categories.buyers', \App\Http\Controllers\Category\CategoryBuyersController::class)->only(['index']);
 Route::apiResource('categories.sellers', \App\Http\Controllers\Category\CategorySellersController::class)->only(['index']);
+
 Route::apiResource('sellers.transactions', \App\Http\Controllers\Seller\SellerTransactionsController::class)->only(['index']);
 Route::apiResource('sellers.categories', \App\Http\Controllers\Seller\SellerCategoriesController::class)->only(['index']);
 Route::apiResource('sellers.buyers', \App\Http\Controllers\Seller\SellerBuyersController::class)->only(['index']);
+Route::apiResource('sellers.products', \App\Http\Controllers\Seller\SellerProductsController::class);
+
 Route::apiResource('products.transactions', \App\Http\Controllers\Product\ProductTransactionsController::class)->only(['index']);
 Route::apiResource('products.buyers', \App\Http\Controllers\Product\ProductBuyersController::class)->only(['index']);
