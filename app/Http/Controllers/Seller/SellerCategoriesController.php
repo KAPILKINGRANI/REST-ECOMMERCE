@@ -16,7 +16,9 @@ class SellerCategoriesController extends ApiController
             ->with('categories')
             ->get()
             ->pluck('categories')
-            ->flatten();
+            ->flatten()
+            ->unique('id')
+            ->values();
         return $this->showAll($categories);
     }
 }
