@@ -12,9 +12,11 @@ Route::apiResource('sellers', \App\Http\Controllers\Seller\SellersController::cl
 Route::apiResource('buyers', \App\Http\Controllers\Buyer\BuyersController::class)->only(['index', 'show']);
 Route::apiResource('categories', \App\Http\Controllers\Category\CategoriesController::class);
 Route::apiResource('transactions', \App\Http\Controllers\Transaction\TransactionsController::class)->only(['index', 'show']);
-Route::apiResource('products', \App\Http\Controllers\Product\ProductsController::class)->only(['index', 'show']);;
+Route::apiResource('products', \App\Http\Controllers\Product\ProductsController::class)->only(['index', 'show']);
+
 Route::apiResource('transactions.categories', \App\Http\Controllers\Transaction\TransactionCategoriesController::class)->only(['index']);
 Route::apiResource('transactions.seller', \App\Http\Controllers\Transaction\TransactionSellerController::class)->only(['index']);
+
 Route::apiResource('buyers.transactions', \App\Http\Controllers\Buyer\BuyerTransactionsController::class)->only(['index']);
 Route::apiResource('buyers.products', \App\Http\Controllers\Buyer\BuyerProductsController::class)->only(['index']);
 Route::apiResource('buyers.sellers', \App\Http\Controllers\Buyer\BuyerSellersController::class)->only(['index']);
@@ -32,3 +34,4 @@ Route::apiResource('sellers.products', \App\Http\Controllers\Seller\SellerProduc
 
 Route::apiResource('products.transactions', \App\Http\Controllers\Product\ProductTransactionsController::class)->only(['index']);
 Route::apiResource('products.buyers', \App\Http\Controllers\Product\ProductBuyersController::class)->only(['index']);
+Route::apiResource('products.categories', \App\Http\Controllers\Product\ProductCategoriesController::class);
