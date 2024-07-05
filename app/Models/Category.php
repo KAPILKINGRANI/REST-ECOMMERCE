@@ -11,6 +11,10 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
+    //in json we dont want to show pivot fields
+    protected $hidden =  [
+        'pivot'
+    ];
     protected $fillable  = [
         'name',
         'description'
