@@ -11,7 +11,7 @@ class SellerBuyersController extends ApiController
 {
     public function index(Seller $seller)
     {
-        $buyers = $seller->products()->whereHas('transactions')->with('transactions.buyer')->get()->pluck('transactions')->flatten()->pluck('buyer')->unique()->values();
+        $buyers = $seller->products()->whereHas('transactions')->with('transactions.buyer')->get()->pluck('transactions')->flatten()->pluck('buyer')->unique('id')->values();
 
         return $this->showAll($buyers);
     }
