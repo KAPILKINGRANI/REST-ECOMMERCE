@@ -14,3 +14,4 @@ Route::apiResource('categories', \App\Http\Controllers\Category\CategoriesContro
 Route::apiResource('transactions', \App\Http\Controllers\Transaction\TransactionsController::class)->only(['index', 'show']);
 Route::apiResource('products', \App\Http\Controllers\Product\ProductsController::class)->only(['index', 'show']);;
 Route::apiResource('transactions.categories', \App\Http\Controllers\Transaction\TransactionCategoriesController::class)->only(['index']);
+Route::apiResource('transactions.seller', \App\Http\Controllers\Transaction\TransactionSellerController::class)->only(['index']);
