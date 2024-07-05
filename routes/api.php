@@ -18,3 +18,4 @@ Route::apiResource('transactions.seller', \App\Http\Controllers\Transaction\Tran
 Route::apiResource('buyers.transactions', \App\Http\Controllers\Buyer\BuyerTransactionsController::class)->only(['index']);
 Route::apiResource('buyers.products', \App\Http\Controllers\Buyer\BuyerProductsController::class)->only(['index']);
 Route::apiResource('buyers.sellers', \App\Http\Controllers\Buyer\BuyerSellersController::class)->only(['index']);
+Route::apiResource('buyers.categories', \App\Http\Controllers\Buyer\BuyerCategoriesController::class)->only(['index']);
