@@ -27,3 +27,4 @@ Route::apiResource('categories.sellers', \App\Http\Controllers\Category\Category
 Route::apiResource('sellers.transactions', \App\Http\Controllers\Seller\SellerTransactionsController::class)->only(['index']);
 Route::apiResource('sellers.categories', \App\Http\Controllers\Seller\SellerCategoriesController::class)->only(['index']);
 Route::apiResource('sellers.buyers', \App\Http\Controllers\Seller\SellerBuyersController::class)->only(['index']);
+Route::apiResource('products.transactions', \App\Http\Controllers\Product\ProductTransactionsController::class)->only(['index']);
