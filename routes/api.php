@@ -35,3 +35,4 @@ Route::apiResource('sellers.products', \App\Http\Controllers\Seller\SellerProduc
 Route::apiResource('products.transactions', \App\Http\Controllers\Product\ProductTransactionsController::class)->only(['index']);
 Route::apiResource('products.buyers', \App\Http\Controllers\Product\ProductBuyersController::class)->only(['index']);
 Route::apiResource('products.categories', \App\Http\Controllers\Product\ProductCategoriesController::class);
+Route::apiResource('products.buyers.transactions', \App\Http\Controllers\Product\ProductBuyerTransactionsController::class);
